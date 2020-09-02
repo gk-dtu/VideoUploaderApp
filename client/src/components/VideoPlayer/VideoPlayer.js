@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import videojs from 'video.js';
 import './VideoPlayer.css';
-//import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -52,6 +52,8 @@ class VideoPlayer extends React.Component {
   render() {
     if (!localStorage.getItem('userTokenTime')) return <Redirect to="/signIn" />
     return (  
+      <React.Fragment>
+        <Navbar></Navbar>
         <div className="row" style={{ width: "100vw" }}>
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-8 mx-auto mt-5">
             {this.state.loaded ? (
@@ -61,6 +63,7 @@ class VideoPlayer extends React.Component {
             ) : ' Loading ... '}
           </div>
         </div>
+        </React.Fragment>
     );
   }
 }
